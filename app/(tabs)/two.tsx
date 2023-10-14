@@ -6,9 +6,8 @@ import { Text, View } from '../../components/Themed';
 export default function TabTwoScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Text style={styles.title}>Updates Tab</Text>
+      <View style={styles.separator} lightColor="#7d6d92" darkColor="rgba(18, 21, 192, 0.5)" />
     </View>
   );
 }
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 30,
-    height: 1,
+    height: 2,
     width: '80%',
   },
 });
