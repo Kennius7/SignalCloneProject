@@ -23,7 +23,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
+        name="HomeScreen"
         options={{
           title: 'Sochat',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
@@ -44,9 +44,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="ChatRoomScreen"
         options={{
-          title: 'Tab Two',
+          title: 'Chat Room',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />

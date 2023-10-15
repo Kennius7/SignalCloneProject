@@ -3,7 +3,7 @@ import { ChatRoomItem } from "../../components/ChatRoomItem/ChatRoomItem";
 import chatRoomData from "../../constants/ChatRooms";
 
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
    <View style={styles.page}>
     <FlatList 
