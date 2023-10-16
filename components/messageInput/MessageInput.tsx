@@ -1,61 +1,49 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { SimpleLineIcons, Feather, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import { Pressable, TextInput, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { useState } from 'react';
+import { SimpleLineIcons, Feather, MaterialCommunityIcons, AntDesign, Ionicons } from '@expo/vector-icons';
+import { styles } from './styles';
 
 
 
 export default function MessageInput() {
+    const [message, setMessage] = useState("");
+    const handlePress = () => {
+        if (message) {
+            console.warn(`Sending: ${message}`)
+        } else {
+            console.warn("Type something in the message box");
+        }
+        
+    }
+
   return (
-    <View style={styles.root}>
+    <KeyboardAvoidingView 
+        style={styles.root} 
+        behavior={ Platform.OS === "ios" ? "padding" : "height" }
+        keyboardVerticalOffset={100}
+    >
+
         <View style={styles.inputContainer}>
             <SimpleLineIcons name="emotsmile" size={24} color="grey" style={styles.smileIcon} />
-            <TextInput style={styles.input} />
+            <TextInput 
+                style={styles.input} 
+                placeholder="Write your message..." 
+                value={message}
+                onChangeText={prev => setMessage(prev)}
+            />
             <Feather name="camera" size={24} color="grey" style={styles.featherIcon} />
             <MaterialCommunityIcons name='microphone-outline' size={24} color='grey' />
         </View>
-        <View style={styles.buttonContainer}>
-            <AntDesign name="plus" size={24} color="white" />
-        </View>
-    </View>
+        <Pressable onPress={handlePress} style={styles.buttonContainer}>
+            {
+                message 
+                    ? <Ionicons name="send" size={20} color="white" /> 
+                    : <AntDesign name="plus" size={24} color="white" />
+            }
+        </Pressable>
+
+    </KeyboardAvoidingView>
   )
 }
 
 
-const styles = StyleSheet.create({
-    root: {
-        flexDirection: "row",
-        padding: 10,
-    },
-    input: {
-        flex: 1,
-        marginHorizontal: 5,
-    },
-    inputContainer: {
-        backgroundColor: "lightgrey",
-        flex: 1,
-        borderRadius: 25,
-        borderWidth: 1,
-        padding: 6,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    buttonContainer: {
-        backgroundColor: "#9c9de2",
-        width: 40,
-        height: 40,
-        borderRadius: 30,
-        alignItems: "center",
-        justifyContent: "center",
-        marginLeft: 5,
-    },
-    buttonText: {
-        fontSize: 30,
-        color: "white",
-    },
-    smileIcon: {
-        marginHorizontal: 5,
-    },
-    featherIcon: {
-        marginHorizontal: 5,
-    },
-})

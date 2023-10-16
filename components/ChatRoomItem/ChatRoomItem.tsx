@@ -1,16 +1,21 @@
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Pressable } from 'react-native';
 import { styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 
 export const ChatRoomItem = ({ chatRoomData }) => {
   const users = chatRoomData.users[1];
   const lastMsgData = chatRoomData.lastMessage;
+  const navigation = useNavigation();
+  const handlePress = () => navigation.navigate("ChatRoomScreen", { id: chatRoomData.id });
 
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: users.imageUri }}
-        style={styles.image} />
+      <Image 
+        source={{ uri: users.imageUri }}
+        style={styles.image} 
+      />
       {
         chatRoomData.newMessage ? 
         <View style={styles.badgeContainer}>
@@ -19,7 +24,7 @@ export const ChatRoomItem = ({ chatRoomData }) => {
           </Text>
         </View> : null
       }
-      <View style={styles.textCol}>
+      <Pressable onPress={handlePress} style={styles.textCol}>
         <View style={styles.row}>
           <Text style={styles.name}>{users.name}</Text>
           <Text style={styles.time}>{lastMsgData.createdAt}</Text>
@@ -27,7 +32,7 @@ export const ChatRoomItem = ({ chatRoomData }) => {
         <Text style={styles.message} numberOfLines={1}>
           {lastMsgData.content}
         </Text>
-      </View>
+      </Pressable>
     </View>
   )
 }

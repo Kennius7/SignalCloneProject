@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View } from "react-native";
-import { ChatRoomItem } from "../../components/ChatRoomItem/ChatRoomItem";
-import chatRoomData from "../../constants/ChatRooms";
+import { ChatRoomItem } from "../components/ChatRoomItem/ChatRoomItem";
+import chatRoomData from "../constants/ChatRooms";
 
 
 export default function HomeScreen() {

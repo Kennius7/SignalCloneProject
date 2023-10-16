@@ -3,10 +3,6 @@ import { styles } from "./styles";
 
 
 
-
-
-
-
 export default function Message ({ message }) {
 
     const messageId = "u1";

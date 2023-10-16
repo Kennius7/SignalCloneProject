@@ -1,8 +1,7 @@
 import { StyleSheet } from "react-native";
+import { appBlue, appGray } from "../../constants/Colors";
 
 
-const appBlue = "#1768c4";
-const appGray = "#9ca7b4";
 
 export const styles = StyleSheet.create({
     container: {
