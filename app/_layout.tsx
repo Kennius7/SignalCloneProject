@@ -4,6 +4,10 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import { HomeHeader } from '../components/headers/HomeHeader';
+import { ChatRoomHeader } from '../components/headers/ChatRoomHeader';
+
+
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -17,6 +21,7 @@ export const unstable_settings = {
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -48,9 +53,16 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="HomeScreen" />
-        <Stack.Screen name="ChatRoomScreen" />
+        <Stack.Screen 
+          name="HomeScreen" 
+          options={{ headerTitle: HomeHeader }} 
+        />
+        <Stack.Screen 
+          name="ChatRoomScreen" 
+          options={{ headerTitle: ChatRoomHeader, headerBackVisible: false }}  
+        />
       </Stack>
     </ThemeProvider>
   );
 }
+

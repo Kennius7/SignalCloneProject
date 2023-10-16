@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     name: {
-      fontSize: 20,
+      fontSize: 16,
       fontWeight: "bold",
     },
     time: {
